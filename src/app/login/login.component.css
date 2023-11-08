@@ -1,0 +1,221 @@
+/*new css*/
+
+.bg-formBg {
+  /* background-image: linear-gradient(rgba(255, 184, 12, 0.6), hsla(0, 0%, 100%, 0.6)), url('/assets/images/bgpurple.jpeg') !important; */
+  /*background: url('/assets/images/login-banner.png') no-repeat center center fixed;*/
+  background: linear-gradient(180deg, rgba(85,84,109,1) 0%, rgb(184, 136, 49) 0%, rgba(0,0,0,1) 100%);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*.form-border {*/
+/*  all: unset;*/
+/*}*/
+
+.form-border {
+  width: 100%;
+  padding: 20px;
+  /*height: 466px;*/
+  color: #fff;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 0px 0 12px 0;
+}
+
+.container label {
+  margin-bottom: 5px;
+  padding-top: 5px;
+  color: white !important;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+label {
+  /*display: inline-block;*/
+  /*margin-bottom: .5rem;*/
+  /*color: #afaeb5 !important;*/
+  float: left;
+  width: 12%;
+  text-align: center;
+  height: 45px;
+  background: #ec1f00;
+  color: #fc0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: #fc0;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin: 8px 0 0px 0;
+  display: inline-block;
+  /* border: 1px solid #f2b728; */
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  color: black !important;
+  height: 45px;
+  border-radius: 10px;
+  /* font-size: 12px;
+  font-weight: 600;
+  line-height: 40px; */
+  /* float: right;
+  width: 88%;
+  padding: 0 5px 0 10px;
+  height: 45px; */
+}
+
+.logo_size {
+  width: 100px;
+  height: 100px;
+}
+
+.login-bg{
+  height:100vh;
+  width:500px;
+  background: linear-gradient(0deg,rgba(0,0,0,.5),rgba(0,0,0,.5)),url('/assets/images/login-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.button_new {
+  /*background-color: #2560ad;*/
+  /*margin-top: 20px;*/
+  /*color: white;*/
+  /*text-align: center;*/
+  /*width: 100%;*/
+  /*background: #2560ad;*/
+  /*font-weight: 400;*/
+  /*font-size: 14px;*/
+  /*height: 45px;*/
+  /*padding: 10px 15px 5px;*/
+  /*line-height: normal;*/
+  /*border-radius: 5px;*/
+  background: #b88831;
+  color: #ffffff;
+  font-size: 15px;
+  text-transform: uppercase;
+  /*border: #ffb80c;*/
+  border-radius: 0;
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
+}
+.button_register{
+  /* background: rgb(135, 0, 201) !important; */
+  background: #000 !important;
+  color:#fff;
+}
+
+button:hover {
+  box-shadow: 0 0 12px #696969;
+  transition: color 0.5s;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+.desktop-from {
+  /*position: absolute;*/
+  width: 350px !important;
+  /*height: auto;*/
+  background: #fff;
+  box-shadow: 0 100px 80px rgba(0, 0, 0, .12), 0 41.7776px 33.4221px rgba(0, 0, 0, .09), 0 22.3363px 17.869px rgba(0, 0, 0, .07), 0 12.5216px 10.0172px rgba(0, 0, 0, .06), 0 6.6501px 5.32008px rgba(0, 0, 0, .05), 0 2.76726px 2.21381px rgba(0, 0, 0, .03);
+  border-radius: 8px;
+  /*padding: 35px;*/
+  /*right: 50px;*/
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5803921568627451);
+  border-radius: 5px;
+  border: 3px solid #fff;
+  background: hsla(0, 0%, 100%, 0.7294117647058823);
+  overflow: initial;
+}
+
+.loginTxt {
+  font-weight: 400;
+  font-size: 36px !important;
+  line-height: 28px;
+  color: #000;
+  font-family: Bebas Neue;
+}
+
+.login-title {
+  background: #000;
+  color: #fff;
+  margin-top: -40px;
+  text-align: center;
+  height: 55px;
+  margin-bottom: 24px;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  box-shadow: 0 15px 25px -8px rgb(0 0 0/66%);
+}
+
+.linput {
+  background: #fff;
+  box-shadow: 0 5px 8px #d0d0d0;
+  width: 100%;
+  float: left;
+  margin-bottom: 15px;
+  position: relative;
+  padding: 0;
+  height: 45px;
+}
+
+.material-icons {
+  color: #fc0;
+}
+
+.fa-unlock-alt::before {
+  content: "\f13e";
+}
+
+.sidebar-header {
+  /*width: 140px;*/
+  /*height: 40px;*/
+  /*left: 38px;*/
+  /*top: 32px;*/
+  font-family: Bebas Neue;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 40px;
+  background-repeat: no-repeat;
+  color: #fc0;
+}
+
+.login-banner{
+  display: block;
+  height: 80vh;
+  width: 50vh !important;
+  border: 1px solid #fff;
+  background: #dabee7;
+  background: url('/assets/images/sl-c-layer-one.png');
+}
+
+@media only screen and (max-width: 767px) {
+  .login-banner{
+    display: none;
+  }
+}
+
+/*new css*/
+/*@media (max-width: 600px) {*/
+/*  .desktop-from {*/
+/*    position: static;*/
+/*    height: auto;*/
+/*    background: #fff;*/
+/*    box-shadow: 0 100px 80px rgba(0, 0, 0, .12), 0 41.7776px 33.4221px rgba(0, 0, 0, .09), 0 22.3363px 17.869px rgba(0, 0, 0, .07), 0 12.5216px 10.0172px rgba(0, 0, 0, .06), 0 6.6501px 5.32008px rgba(0, 0, 0, .05), 0 2.76726px 2.21381px rgba(0, 0, 0, .03);*/
+/*    border-radius: 8px;*/
+/*    padding: 35px;*/
+/*    right: 0px !important;*/
+/*  }*/
+/*}*/

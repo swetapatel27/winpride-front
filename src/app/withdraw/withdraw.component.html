@@ -1,0 +1,56 @@
+<h2 class="userscreen-title mt-1"><button (click)="backClicked()" class="btn-xs back-page">Back</button></h2>
+<div style="background: #000000;" class="container-fluid">
+    <div class="card">
+      <div class="card-header p-2 d-flex align-items-center w-100 justify-content-between">
+        <h6 id="addAccountButton" class="float-left mb-0">Withdraw Requests</h6>
+        <div class="form-group mb-0 text-right">
+          <button class="btn btn-success btn-sm " style="background: #dc3545;" (click)="addWithdrawRequest()">Add Withdraw</button>
+        </div>
+      </div>
+      <div class="card-body redtablehead">
+        <div class="card mb-2 text-card-box">
+            <div class="card-body p-2 text-left text-card" style="font-size: 10px !important;color: red;">
+                <p>1. This form is for withdrawing the amount from the main wallet only.</p>
+                <p>2. The bonus wallet amount cannot be withdrawn by this form.</p>
+                <p>3. Do not put Withdraw request without betting with deposit amount. Such activity may
+                    be identified as Suspicious</p>
+                <p>4. If multiple users are using same withdraw account then all the linked users will
+                    be blocked.</p>
+                <p>5. Maximum Withdraw time is 45 minutes then only complain on WhatsApp number.</p>
+            </div>
+        </div>
+        <div class="overflow-auto">
+        <table class="table table-md table-bordered table-striped table-hover clearfix">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Upi</th>
+            <th>Account No.</th>
+            <th>Bank Name</th>
+            <th>IFSC</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Proofs</th>
+            <th>Date</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="withdraw_requests.length>0">
+          <tr *ngFor="let withdraw_request of withdraw_requests; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{withdraw_request.upi}}</td>
+            <td>{{withdraw_request.account_id}}</td>
+            <td>{{withdraw_request.bank_name}}</td>
+            <td>{{withdraw_request.ifsc_code}}</td>
+            <td>{{withdraw_request.amount}}</td>
+            <td>{{withdraw_request.status == 0 ? 'Pending' : (withdraw_request.status == -1 ? 'Declined' : 'Approved')}}</td>
+            <td><button (click)="openProofListModal(withdraw_request.id)" class="btn btn-sm btn-primary">view</button></td>
+            <!-- <td>{{withdraw_request.updated_at | date:'medium':'IST' }}</td> -->
+            <td>{{withdraw_request.updated_at}}</td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

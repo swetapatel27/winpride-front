@@ -1,0 +1,172 @@
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    /* height: 100vh; */
+    background-color: #000000;
+
+}
+
+main {
+    background-color: #000000;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+mat-sidenav {
+    width: 58vw;
+    /* background: rgba(0, 0, 0, 0.5); */
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    /* padding: 20px;
+    margin: 30px; */
+    font-weight: bold;
+    /*border-right: 8px solid #b88831;*/
+}
+
+
+/* // Component content area */
+.container {
+    height: 100vh;
+    overflow: auto;
+    padding: 10px;
+    margin-bottom: 70px;
+}
+
+.sticky-bottom {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: black;
+    z-index: 1;
+}
+
+
+.mob-bar-header-inn2 {
+    display: block;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 0 5px 5px;
+    background-size: cover;
+
+}
+
+.bg-black, marquee {
+    background-color: black;
+    color: white;
+
+}
+
+.menu-item {
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.active {
+    background: #e6a800;
+}
+
+.bg-container {
+    /*background-image: url('/assets/images/HomePageBg.webp') !important;*/
+    background-repeat: repeat-y !important;
+    background-size: 100% !important;
+    background-position-y: 0px !Important;
+    display: block !important;
+}
+
+
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    z-index: 9999;
+}
+
+.fixed-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+::ng-deep .list-group-item {
+    padding: 0.1rem 1.25rem !important;
+}
+
+.list-group-item.active {
+    /*border-color: white;*/
+    background: linear-gradient(94deg, #b6842d, #ebda8d 55%, #b7862f) !important;
+    border-color: #b88831;
+}
+
+.newhead {
+    position: relative;
+    padding: 10px 15px;
+    display: inline-block;
+    width: 100%;
+    background: linear-gradient(94deg, #b6842d, #ebda8d 55%, #b7862f) !important;
+    color: #000;
+    font-size: 14px;
+}
+
+.payimg {
+    width: 80px;
+}
+
+.text-link {
+    color: #c1c1c1 !important;
+}
+
+.inline-icons {
+    display: inline-flex;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.footer-main {
+    margin: auto;
+    /*padding: 30px 0;*/
+    width: 100%;
+}
+
+.footer-cont {
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.pure-u-3-5 {
+    text-rendering: auto;
+    display: inline-block;
+    letter-spacing: normal;
+    vertical-align: top;
+    word-spacing: normal;
+}
+
+.provider-list-box {
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.provider-list-box img {
+    display: block;
+    height: 42px;
+    margin-bottom: 2px;
+    margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+    .zero-margin-desktop {
+        margin-bottom: 0px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .zero-margin-desktop {
+        margin-bottom: 65px;
+    }
+}

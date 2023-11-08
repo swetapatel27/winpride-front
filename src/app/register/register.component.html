@@ -1,0 +1,103 @@
+<!--new form design-->
+<div class="container-fluid bg-formBg">
+  <div class="d-flex align-items-center justify-content-center" style="height:100vh;">
+    <form  class="form-border desktop-from" [formGroup]="registerForm" >
+      <div class="login-title">Sign Up</div>
+            <div class="imgcontainer">
+              <img src="assets/images/logo_winpride.png" style="width: 100%;" alt="" class="logo_size">
+            </div>
+      <div class="container mt-4 pb-2">
+        <p
+          *ngIf="errorMsg"
+          class="alert alert-danger m-1 p-1"
+        >
+          {{ errorMsg }}
+        </p>
+        <p
+          *ngIf="successMsg"
+          class="alert alert-success m-1 p-1"
+        >
+          {{ successMsg }}
+        </p>
+        <!-- <div class="linput">
+          <label class="text-uppercase" for="inputName">+91</label>
+          <input type="text" formControlName="contact" class="form-control" id="inputName"
+                 placeholder="Mobile number*">
+          <span
+            class="text-danger"
+            *ngIf="
+                (registerFormControl.contact.touched || submitted) &&
+                registerFormControl.contact.errors?.required">
+              Mobile Number is required
+            </span>
+        </div> -->
+
+        <div class="linputOld">
+          <!-- <span class="input-addon">+91</span> -->
+          <input type="text" formControlName="contact" class="form-control plus91" id="inputName"
+                 placeholder="Mobile Number*">
+          <span
+            class="text-danger"
+            *ngIf="
+                (registerFormControl.contact.touched || submitted) &&
+                registerFormControl.contact.errors?.required">
+              Mobile number is required
+          </span>
+          <span class="text-danger" *ngIf="registerForm.get('contact').hasError('pattern')">
+            Please enter valid mobile no.
+          </span>
+        </div>
+
+        <div class="linputOld">
+          <input type="text" formControlName="name" class="form-control" id="inputName"
+                 placeholder="Your name*">
+          <span
+            class="text-danger"
+            *ngIf="
+                (registerFormControl.name.touched || submitted) &&
+                registerFormControl.name.errors?.required">
+              Name is required
+            </span>
+        </div>
+
+        <div class="linputOld">
+          <input type="text" formControlName="username" class="form-control" id="inputName"
+                 placeholder="Username*">
+          <span
+            class="text-danger"
+            *ngIf="
+                (registerFormControl.username.touched || submitted) &&
+                registerFormControl.username.errors?.required">
+              Username is required
+            </span>
+        </div>
+
+        <div class="linputOld">
+          <input type="password" formControlName="password" class="form-control" id="inputPassword"
+                 placeholder="Password*">
+          <span
+            class="text-danger"
+            *ngIf="
+                (registerFormControl.password.touched || submitted) &&
+                registerFormControl.password.errors?.required">
+              Password is required
+            </span>
+        </div>
+        <input type="hidden" formControlName="referer_name">
+        <div class="text-center">
+          <button class="btn button_new w-100 d-flex justify-content-center mt-4"
+          [disabled]="clicked"  (click)="register();"><span class=" d-flex align-items-center mr-1 font-weight-bold" >REGISTER NOW</span>
+          </button>
+        </div>
+        <div class="row display-flex justify-content-between mt-3">
+          <div>
+            <button type="button" class="btn btn-primary btn-sm button_purple">download apk</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary btn-sm button_purple" routerLink="/">Home</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

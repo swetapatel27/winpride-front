@@ -1,0 +1,130 @@
+<div class="container-fluid" style="background-color: #1b1b1b;">
+  <div class="container p-2">
+    <div class="row text-white">
+      <div class="col-3"><span>Limit</span><br><span>{{balance}}</span></div>
+      <div class="col-6 text-center">
+        <span>Profile</span><br>
+        <span>Icon</span><br>
+        <span class="text-uppercase">{{username}}</span><br>
+        <span>EXPOSURE</span><br>
+        <span *ngIf="exposure.length>0">{{exposure[0].exp_amount}}</span>
+      </div>
+      <div class="col-3"><span>Balance</span><br><span>{{balance}}</span></div>
+      <div class="col-2"></div>
+      <div class="col-8 mt-2 p-1 bg-theme text-center rounded"><span
+        class="text-white bg-theme">BET HISTORY</span></div>
+    </div>
+  </div>
+  <div class="container p-2">
+    <div class="row text-white">
+      <div class="col-12">
+        <div class="text-center text-dark">
+          <div style="background: #ececec; padding: 5px 0px 5px 0px;">
+            <div style="background: #ebebeb; display: inline; box-shadow: 5px 3px 20px -6px black; padding: 4px;">
+              Refer url: <span>{{refrerurl}}</span>
+              <span (click)="copyMessage(refrerurl)" class="material-symbols-outlined copybtn" style="cursor: copy; margin-left: 10px; vertical-align: middle;">
+                content_copy
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3" style="overflow: scroll; min-height: 67vh;"
+       *ngIf="cricket_all_bets_pl.length>0">
+    <!--    cricket pl-->
+    <div class="mt-3" *ngFor="let all_pl of cricket_all_bets_pl"
+         style="background-color: #3c444b !important;color:white; border-radius: 5px;">
+      <div class="d-flex justify-content-between p-3 ">
+        <div>Img {{all_pl.updated_at| date:'MMM d, y h:mm a'}}</div>
+        <div class="font-weight-bold" [class.text-danger]="all_pl.profit_loss<0"
+             [class.text-success]="all_pl.profit_loss>=0">{{all_pl.profit_loss}}</div>
+      </div>
+      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.runner_name}}</p>
+      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.event_name}}</p>
+      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.event_id}}</p>
+      <div class="row marketlist">
+        <span class="col-5">Market</span>
+        <span class="col-7 float-right">{{all_pl.runner_name}}</span>
+      </div>
+      <div class="row marketlist">
+        <span class="col-5">Selection</span>
+        <span class="col-7 float-right">{{all_pl.main_type == 'match_odd' ? all_pl.runner_name : all_pl.price}}</span>
+      </div>
+      <div class="row marketlist"><span class="col-5">Rate</span>
+        <span class="col-7 float-right text-success">{{all_pl.type}}
+          @{{all_pl.main_type == 'match_odd' ? all_pl.price : all_pl.size}}</span>
+      </div>
+      <div class="row marketlist"><span class="col-5">Stake</span>
+        <span class="col-7 float-right text-success">{{all_pl.loss_amount}}</span>
+      </div>
+      <div class="row marketlist"><span class="col-5">Time</span>
+        <span class="col-7 float-right">{{all_pl.updated_at| date:'MMM d, y h:mm a'}}</span>
+      </div>
+    </div>
+    <!--    cricket pl ends-->
+    <!--    tennis pl-->
+<!--    <div class="mt-3" *ngFor="let all_pl of tennis_all_bets_pl"-->
+<!--         style="background-color: #3c444b !important;color:white; border-radius: 5px;">-->
+<!--      <div class="d-flex justify-content-between p-3 ">-->
+<!--        <div>Img {{all_pl.updated_at| date:'MMM d, y h:mm:ss a'}}</div>-->
+<!--        <div class="font-weight-bold" [class.text-danger]="all_pl.profit_loss<0"-->
+<!--             [class.text-success]="all_pl.profit_loss>=0">{{all_pl.profit_loss}}</div>-->
+<!--      </div>-->
+<!--      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.runner_name}}</p>-->
+<!--      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.event_name}}</p>-->
+<!--      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.event_id}}</p>-->
+<!--      <div class="row marketlist">-->
+<!--        <span class="col-5">Market</span>-->
+<!--        <span class="col-7 float-right">{{all_pl.runner_name}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist">-->
+<!--        <span class="col-5">Selection</span>-->
+<!--        <span class="col-7 float-right">{{all_pl.main_type == 'match_odd' ? all_pl.runner_name : all_pl.price}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist"><span class="col-5">Rate</span>-->
+<!--        <span class="col-7 float-right text-success">{{all_pl.type}}-->
+<!--          @{{all_pl.main_type == 'match_odd' ? all_pl.price : all_pl.size}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist"><span class="col-5">Stake</span>-->
+<!--        <span class="col-7 float-right text-success">{{all_pl.loss_amount}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist"><span class="col-5">Time</span>-->
+<!--        <span class="col-7 float-right">{{all_pl.updated_at| date:'MMM d, y h:mm:ss a'}}</span>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--    tennis pl ends-->
+    <!--    soccer pl start-->
+<!--    <div class="mt-3" *ngFor="let all_pl of soccer_all_bets_pl"-->
+<!--         style="background-color: #3c444b !important;color:white; border-radius: 5px;">-->
+<!--      <div class="d-flex justify-content-between p-3 ">-->
+<!--        <div>Img {{all_pl.updated_at| date:'MMM d, y h:mm:ss a'}}</div>-->
+<!--        <div class="font-weight-bold" [class.text-danger]="all_pl.profit_loss<0"-->
+<!--             [class.text-success]="all_pl.profit_loss>=0">{{all_pl.profit_loss}}</div>-->
+<!--      </div>-->
+<!--      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.runner_name}}</p>-->
+<!--      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.event_name}}</p>-->
+<!--      <p class="col-12 text-left text-success pb-0 mb-1">{{all_pl.event_id}}</p>-->
+<!--      <div class="row marketlist">-->
+<!--        <span class="col-5">Market</span>-->
+<!--        <span class="col-7 float-right">{{all_pl.runner_name}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist">-->
+<!--        <span class="col-5">Selection</span>-->
+<!--        <span class="col-7 float-right">{{all_pl.main_type == 'match_odd' ? all_pl.runner_name : all_pl.price}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist"><span class="col-5">Rate</span>-->
+<!--        <span class="col-7 float-right text-success">{{all_pl.type}}-->
+<!--          @{{all_pl.main_type == 'match_odd' ? all_pl.price : all_pl.size}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist"><span class="col-5">Stake</span>-->
+<!--        <span class="col-7 float-right text-success">{{all_pl.loss_amount}}</span>-->
+<!--      </div>-->
+<!--      <div class="row marketlist"><span class="col-5">Time</span>-->
+<!--        <span class="col-7 float-right">{{all_pl.updated_at| date:'MMM d, y h:mm:ss a'}}</span>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--    soccer pl ends-->
+  </div>
+</div>

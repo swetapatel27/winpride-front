@@ -1,0 +1,92 @@
+<div class="container-fluid p-0 m-0">
+  <div class="card border-0 p-0 m-0">
+    <div class="card-header">
+      <span (click)="closeDialog()" class="material-symbols-outlined float-right text-red">
+        cancel
+      </span>
+      <span>Signin</span>
+    </div>
+    <div class="card-body">
+      <p style="font-size: 20px; text-align: center; letter-spacing: 2px;">WELCOME TO <br> VEGASS<small>567</small></p>
+      <form style="min-width: 250px;" [formGroup]="loginForm" >
+        <p
+          *ngIf="errorMsg"
+          class="alert alert-danger alert-dismissible fade show"
+        >
+          {{ errorMsg }}
+        </p>
+        <div class="form-group">
+          <!-- <label class="form-control-label">Username</label> -->
+          <input
+            type="text"
+            class="form-control rounded-pill"
+            formControlName="username"
+            placeholder="Client username"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+                (loginFormControl.username.touched || submitted) &&
+                loginFormControl.username.errors?.required
+              "
+          >
+              Username is required
+            </span>
+        </div>
+        <div class="form-group">
+          <!-- <label class="form-control-label">Password</label> -->
+          <input
+            type="password"
+            class="form-control rounded-pill"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+                (loginFormControl.password.touched || submitted) &&
+                loginFormControl.password.errors?.required
+              "
+          >
+              Password is required
+            </span>
+        </div>
+
+        <div class="col-lg-12 loginbttm p-0">
+          <div class="col-lg-6 login-btm login-text">
+            <!-- Error Message -->
+          </div>
+          <div
+            style="text-align: center"
+            (click)="login()"
+            class="col-lg-12 login-btm login-button"
+          >
+            <button
+              type="button"
+              style="width: 100%;text-align: center;"
+
+              class="btn btn-block btn-outline-light mt-3"
+            >
+              Sign in
+            </button>
+            <small>Powered by vegass567</small>
+          </div>
+<!--          <div-->
+<!--          style="text-align: center"-->
+<!--          (click)="demologin()"-->
+<!--          class="col-lg-12 login-btm login-button"-->
+<!--        >-->
+<!--          <button-->
+<!--            type="button"-->
+<!--            style="width: 100%;text-align: center;"-->
+
+<!--            class="btn btn-success rounded-pill mt-3"-->
+<!--          >-->
+<!--            Login With Demo-->
+<!--          </button>-->
+<!--         </div>-->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

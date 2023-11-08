@@ -1,0 +1,238 @@
+<div class="content-wrapper" style="min-height: 368px">
+    <div class="pt-0 pb-1">
+        <div>
+            <!--      <img class="img-fluid" src="assets/images/arjun_banner.png" style="height: 180px; width: 1423px;">-->
+            <!-- <carousel
+              [images]="banner_url"
+              [cellWidth]="'100%'"
+              [height]="240"
+              [autoplay]="true"
+              [autoplayInterval]="2000"
+              [loop]="true"
+              [arrowsTheme]="'dark'"
+              [dots]="true">
+            </carousel> -->
+
+            <!-- <ngb-carousel>
+              <ng-template *ngFor="let banner of banner_url" ngbSlide>
+                <div class="slide-container border-white">
+                  <img style="width:100%" [src]="banner.path"
+                      class='carouselImage'>
+                </div>
+              </ng-template>
+            </ngb-carousel> -->
+        </div>
+        <!--    cricket inplays-->
+        <div class="card mt-1 border-0">
+            <div style="background: #e9eff8;" class="card-header font-weight-bold rounded text-dark p-0">
+        <span class="newhead">
+          <img style="border-radius: 10px; max-width: 20px; vertical-align: sub;" src="assets/icons/cricket.png">
+           Cricket</span>
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="border-body" *ngFor="let market of markets" (click)="openMatchDetails(market.event_id)">
+                        <div class="d-flex justify-content-between">
+                            <div style="color:#000;" class="ml-2 font-weight-bold">
+                                <!-- <img class="cric-icon" src="assets/images/cricket.svg"> -->
+                                <div class="game-head-text">{{market.runner1}} v {{market.runner2}}</div>
+                                <div class="game-grey-text">(others)</div>
+                            </div>
+
+                            <div *ngIf="market.inplay;" class="ml-2">
+                                <span style="color:green">LIVE</span>
+                            </div>
+
+                             <div class="">
+                                <div *ngIf="market.inplay;" class="ml-2 game-grey-text">
+                                    <div>{{market.start_time|date:'mediumDate'}}</div>
+                                    <div>{{market.start_time|date:'h:mm a'}}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <span><img style="height: 20px;" src="/assets/icons/fancy.svg" alt="fancy"></span>
+                                <span><img style="height: 20px;" src="/assets/icons/tv.svg" alt="tv"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div
+                                    class="p-2 flexitem bg-blue ">{{market.back1}}</div>
+                            <div
+                                    class="p-2 flexitem bg-pink ">{{market.lay1}}</div>
+                            <div class="p-2 flexitem bg-blue">
+                                <div class="font-weight-bold bg-blue">&#45;&#45;</div>
+                            </div>
+                            <div class="p-2 flexitem bg-pink">
+                                <div class="font-weight-bold bg-pink">&#45;&#45;</div>
+                            </div>
+                            <div
+                                    class="p-2 flexitem bg-blue ">{{market.back2}}</div>
+                            <div
+                                    class="p-2 flexitem bg-pink ">{{market.lay2}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    cricket inplay ends-->
+        <!-- tennis inplays -->
+        <div class="card border-0 mt-3">
+            <div style="background: #e9eff8;" class="card-header font-weight-bold rounded text-dark p-0">
+      <span class="newhead">
+        <img style="border-radius: 10px; max-width: 20px; vertical-align: sub;" src="assets/icons/tennis.png">
+         Tennis</span>
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="border-body" *ngFor="let market of tennisMarkets"
+                         (click)="openTennisDetails(market.event_id)">
+                        <div class="d-flex justify-content-between">
+                            <div style="color:#000;" class="ml-2 font-weight-bold">
+                                <!-- <img class="cric-icon" src="assets/images/tennis.svg"> -->
+                                <div class="game-head-text">{{market.runner1}} v {{market.runner2}}</div>
+                                <div class="game-grey-text">(others)</div>
+                            </div>
+                            <div *ngIf="market.inplay;" class="ml-2">
+                                <span style="color:green">LIVE</span>
+                            </div>
+
+                            <div class="">
+                                <div *ngIf="market.inplay;" class="ml-2 game-grey-text">
+                                    <div>{{market.start_time|date:'mediumDate'}}</div>
+                                    <div>{{market.start_time|date:'h:mm a'}}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <span><img style="height: 20px;" src="/assets/icons/fancy.svg" alt="fancy"></span>
+                                <span><img style="height: 20px;" src="/assets/icons/tv.svg" alt="tv"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div
+                                    class="p-2 flexitem bg-blue ">{{market.back0_price}}</div>
+                            <div
+                                    class="p-2 flexitem bg-pink ">{{market.lay0_price}}</div>
+                            <div class="p-2 flexitem bg-blue">
+                                <div class="font-weight-bold bg-blue"
+                                     *ngIf="market.runner3!=null; else drawFalse">{{market.back2_price}}</div>
+                                <ng-template #drawFalse>
+                                    <div class="font-weight-bold bg-blue">&#45;&#45;</div>
+                                </ng-template>
+                            </div>
+                            <div class="p-2 flexitem bg-pink">
+                                <div class="font-weight-bold bg-pink"
+                                     *ngIf="market.runner3!=null; else drawFalse1">{{market.lay2_price}}</div>
+                                <ng-template #drawFalse1>
+                                    <div class="font-weight-bold bg-pink">&#45;&#45;</div>
+                                </ng-template>
+                            </div>
+                            <div
+                                    class="p-2 flexitem bg-blue ">{{market.back1_price}}</div>
+                            <div
+                                    class="p-2 flexitem bg-pink ">{{market.lay1_price}}</div>
+                        </div>
+
+
+                        <!--            &lt;!&ndash;          if runners not exists&ndash;&gt;-->
+                        <ng-template #blankRunner>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div class="p-2 flexitem bg-blue ">0</div>
+                                <div class="p-2 flexitem bg-pink ">0</div>
+                                <div class="p-2 flexitem bg-blue ">
+                                    <div class="bg-blue">&#45;&#45;</div>
+                                </div>
+                                <div class="p-2 flexitem bg-pink ">
+                                    <div class="bg-pink">&#45;&#45;</div>
+                                </div>
+                                <div class="p-2 flexitem bg-blue ">0</div>
+                                <div class="p-2 flexitem bg-pink ">0</div>
+                            </div>
+                        </ng-template>
+                        <!--                 if runners not exists-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--   tennis inplays ends-->
+        <!--   soccer inplays-->
+        <div class="card border-0 mt-3">
+            <div style="background: #e9eff8;" class="card-header font-weight-bold rounded text-dark p-0">
+      <span class="newhead">
+        <img style="border-radius: 10px; max-width: 20px; vertical-align: sub;" src="assets/icons/football.png">
+        Football</span>
+            </div>
+            <div class="card-body">
+                <div>
+                    <div class="border-body" *ngFor="let market of soccerMarkets"
+                         (click)="openSoccerDetails(market.event_id)">
+                        <div class="d-flex justify-content-between">
+                            <div style="color:#000;" class="ml-2 font-weight-bold">
+                                <!-- <img class="cric-icon" src="assets/images/soccer.svg"> -->
+                                <div class="game-head-text">{{market.runner1}} v {{market.runner2}}</div>
+                                <div class="game-grey-text">(others)</div>
+                            </div>
+
+                            <div *ngIf="market.inplay;" class="ml-2">
+                                <span style="color:green">LIVE</span>
+                            </div>
+
+                            <div class="">
+                                <div *ngIf="market.inplay;" class="ml-2 game-grey-text">
+                                    <div>{{market.start_time|date:'mediumDate'}}</div>
+                                    <div>{{market.start_time|date:'h:mm a'}}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <span><img style="height: 20px;" src="/assets/icons/fancy.svg" alt="fancy"></span>
+                                <span><img style="height: 20px;" src="/assets/icons/tv.svg" alt="tv"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div
+                                    class="p-2 flexitem bg-blue ">{{market.back0_price}}</div>
+                            <div
+                                    class="p-2 flexitem bg-pink ">{{market.lay0_price}}</div>
+                            <div class="p-2 flexitem bg-blue">
+                                <div class="font-weight-bold bg-blue"
+                                     *ngIf="market.runner3!=null; else drawFalse">{{market.back2_price}}</div>
+                                <ng-template #drawFalse>
+                                    <div class="font-weight-bold bg-blue">&#45;&#45;</div>
+                                </ng-template>
+                            </div>
+                            <div class="p-2 flexitem bg-pink">
+                                <div class="font-weight-bold bg-pink"
+                                     *ngIf="market.runner3!=null; else drawFalse1">{{market.lay2_price}}</div>
+                                <ng-template #drawFalse1>
+                                    <div class="font-weight-bold bg-pink">&#45;&#45;</div>
+                                </ng-template>
+                            </div>
+                            <div
+                                    class="p-2 flexitem bg-blue ">{{market.back1_price}}</div>
+                            <div
+                                    class="p-2 flexitem bg-pink ">{{market.lay1_price}}</div>
+                        </div>
+
+
+                        <!--            &lt;!&ndash;          if runners not exists&ndash;&gt;-->
+                        <ng-template #blankRunner>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div class="p-2 flexitem bg-blue ">0</div>
+                                <div class="p-2 flexitem bg-pink ">0</div>
+                                <div class="p-2 flexitem bg-blue ">
+                                    <div class="bg-blue">&#45;&#45;</div>
+                                </div>
+                                <div class="p-2 flexitem bg-pink ">
+                                    <div class="bg-pink">&#45;&#45;</div>
+                                </div>
+                                <div class="p-2 flexitem bg-blue ">0</div>
+                                <div class="p-2 flexitem bg-pink ">0</div>
+                            </div>
+                        </ng-template>
+                        <!--            &lt;!&ndash;          if runners not exists&ndash;&gt;-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    soccer inplays ends-->
+    </div>
+</div>

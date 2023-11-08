@@ -1,0 +1,45 @@
+<div  *ngIf="isMobile && isLoggedIn()" class="hide-on-desktop">
+  <div class="d-flex bg-black justify-content-between text-center">
+    <div class="p-2 tab" routerLink="/dashboard/cricket">
+      <span class="material-symbols-outlined text-light">sports_cricket</span><br>
+      Sports
+    </div>
+    <div class="p-2 tab " routerLink="/dashboard/inplay-match">
+      <span class="material-symbols-outlined text-light">play_circle</span><br>
+      In-play
+    </div>
+   <div class="p-2 tab extra" routerLink="/dashboard/home">
+     <span class="material-symbols-outlined text-light">Home</span><br>
+   </div>
+    <div class="p-2 tab " routerLink="/dashboard/casino">
+      <span class="material-symbols-outlined text-light">token</span><br>
+      Casino
+    </div>
+    <div class="p-2 tab " routerLink="/dashboard/bonus">
+      <span class="material-symbols-outlined text-light d-block">celebration</span>
+
+      Bonus
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->
+
+
+<!-- Copyright 2023 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
+
+<!--
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="over">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+          Toggle extra text
+        </button>
+      </mat-drawer>
+
+
+</mat-drawer-container> -->
+

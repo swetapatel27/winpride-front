@@ -1,0 +1,32 @@
+input{
+    width:80%;
+}
+.bg-yellow{
+  background: #ffc701;
+  min-width: 7%;
+  text-align: center;
+  color: black;
+
+}
+*{
+  color: white;
+}
+input[type="text"],input[type="number"]{
+  background-color: white;
+  border: 2px solid black;
+  color: black !important;
+  border-radius: 5px;
+  font-size:14px ;
+  height: 35px;
+
+}
+
+.bg-dark{
+  background-color: #000 !important;
+  color:#fff;
+}
+
+.mytable-tr{
+  background: #fff;
+  width: 100%;
+}

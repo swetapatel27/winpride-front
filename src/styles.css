@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    /*background-color:black;*/
+    /*color: black;*/
+    /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+    /*font-size: 1rem;*/
+    font-weight: 400;
+    /*line-height: 1.5;*/
+
+}
+
+.border-body {
+    /*border-radius: 6px;*/
+    /*border: 1px solid gray;*/
+}
+
+.flexitem {
+    width: 16%;
+    text-align: center;
+    /* border-radius: 3px; */
+    line-height: 20px;
+    margin: 2px 0;
+    font-weight: 600;
+    border: 1px solid grey;
+    height: 33px;
+}
+
+.card-body {
+    font-size: 12px;
+
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url("assets/fonts/BebasNeue.ttf");
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url("assets/fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Mukta';
+    src: url("assets/fonts/Mukta-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url("assets/fonts/TitilliumWeb-SemiBold.ttf");
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Titillium Web', sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif, microsoft yahei, microsoft jhenghei; */
+    /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;*/
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.btn {
+    border-radius: 0px;
+}

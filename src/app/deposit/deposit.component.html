@@ -1,0 +1,46 @@
+<h2 class="userscreen-title mt-1"><button (click)="backClicked()" class="btn-xs back-page">Back</button></h2>
+<div style="background: #000000;" class="container-fluid">
+  <div class="card">
+    <div class="card-header p-2 d-flex align-items-center w-100 justify-content-between">
+      <h6 id="addAccountButton" class="float-left mb-0">Deposit Requests</h6>
+      <div class="form-group mb-0 mb-0 text-right">
+        <button class="btn btn-success btn-sm " style="background: #dc3545;" (click)="addDepositRequest()">Add Deposit</button>
+      </div>
+    </div>
+    <div class="card-body redtablehead">
+      <div class="card mb-2 text-card-box">
+        <div class="card-body p-2 text-left text-card" style="font-size: 10px !important;color: red;">
+          <p>1. Deposit money only in the below available accounts to get the fastest credits and avoid possible delays.</p>
+          <p>2. Deposits made 45 minutes after the account removal from the site are valid &amp; will be added to their wallets.</p>
+          <p>3. Site is not responsible for money deposited to Old, Inactive or Closed accounts.</p>
+          <p>4. After deposit, add your UTR and amount to receive balance. </p>
+          <p>5. NEFT receiving time varies from 40 minutes to 2 hours. </p>
+          <p>6. In case of account modification: payment valid for 1 hour after changing account details in deposit page. </p>
+        </div>
+      </div>
+      <div class="overflow-auto">
+      <table class="table table-sm table-bordered table-striped table-hover clearfix">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Method</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="deposit_requests.length>0 || deposit_requests !=null">
+        <tr *ngFor="let deposit_request of deposit_requests; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{deposit_request.method}}</td>
+          <td>{{deposit_request.amount}}</td>
+          <td>{{deposit_request.status == 0 ? 'Pending' : (deposit_request.status == -1 ? 'Declined' : 'Approved')}}</td>
+          <!-- <td>{{deposit_request.updated_at | date:'medium':'IST' }}</td> -->
+          <td>{{deposit_request.updated_at }}</td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

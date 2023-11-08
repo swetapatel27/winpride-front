@@ -1,0 +1,102 @@
+<!--new form design-->
+<div class="container-fluid bg-formBg">
+  <div class="d-flex align-items-center justify-content-center" style="height:100vh;">
+    <div class="d-flex align-items-center justify-content-center login-bg" >
+<!--    <form  class="form-border desktop-from" [formGroup]="loginForm" >-->
+      <form  [formGroup]="loginForm" >
+<!--      <div class="login-title">Sign in</div>-->
+            <div class="imgcontainer">
+              <img src="assets/images/logo_winpride.png" style="width: 100%;" alt="" class="logo_size">
+
+<!--              <div class="sidebar-header text-center">JIOBET365</div>-->
+            </div>
+      <!--      <h2 class="text-white text-center" style="font-style:italic;text-decoration:none">Sign in to access your-->
+      <!--        account</h2>-->
+<!--      <div class="container">-->
+<!--        <div class="col-6 pd0 loginTxt pl-0">LOGIN</div>-->
+<!--      </div>-->
+      <div class="container mt-4 pb-2">
+
+        <p
+          *ngIf="errorMsg"
+          class="alert alert-danger m-1 p-1"
+        >
+          {{ errorMsg }}
+        </p>
+        <p
+          *ngIf="successMsg"
+          class="alert alert-success m-1 p-1"
+        >
+          {{ successMsg }}
+        </p>
+        <div class="linputOld">
+          <!-- <label class="text-uppercase" for="inputName"><span class="material-icons">person</span></label> -->
+          <input type="text" formControlName="username" class="form-control" id="inputName"
+                 placeholder="Username">
+          <!--          <mat-icon _ngcontent-serverapp-c141="" role="img" matsuffix=""-->
+          <!--                    class="mat-icon notranslate text-warning material-icons mat-icon-no-color" aria-hidden="true"-->
+          <!--                    data-mat-icon-type="font">person_outline-->
+          <!--          </mat-icon>-->
+          <span
+            class="text-danger"
+            *ngIf="
+                (loginFormControl.username.touched || submitted) &&
+                loginFormControl.username.errors?.required">
+              Username is required
+            </span>
+        </div>
+
+        <div class="linputOld">
+          <!-- <label class="text-uppercase" for="inputPassword"><span class="material-icons">lock</span></label> -->
+          <input type="password" formControlName="password" class="form-control" id="inputPassword"
+                 placeholder="Password">
+          <span
+            class="text-danger"
+            *ngIf="
+                (loginFormControl.password.touched || submitted) &&
+                loginFormControl.password.errors?.required">
+              Password is required
+            </span>
+        </div>
+        <div class="text-center mt-4">
+          <div>
+            <span class="text-white">Do not have an account? </span>
+            <button type="button" class="btn btn-sm button_register text-light" routerLink="/register">Register</button>
+          </div>
+          <button type="submit" class="btn button_new w-100 d-flex justify-content-center mt-2"
+                  (click)="login()"><span class=" d-flex align-items-center mr-1 font-weight-bold" >LOGIN</span>
+            <!--            <mat-icon _ngcontent-serverapp-c141="" role="img" class="mat-icon notranslate material-icons mat-icon-no-color text-white" aria-hidden="true" data-mat-icon-type="font">login</mat-icon>-->
+          </button>
+          <button type="button" class="btn button_new w-100 d-flex justify-content-center mt-2"
+                  (click)="demologin()"><span class=" d-flex align-items-center mr-1 font-weight-bold" >LOGIN WITH DEMO ID</span>
+          </button>
+          <p class="text-center mt-2 text-white">Powered by <span style="color:#b88831;">Vegas567.com</span></p>
+          <!-- <h6 style="color:#000;font-weight:bold;text-align: left;">Note - This Website is not for Indian Territory.</h6> -->
+        </div>
+<!--        <div class="container mt-3" style="text-align:center;">-->
+<!--          &lt;!&ndash;          <a class="text-warning font-weight-bold float-left" style="font-size: 14px">Login with OTP</a>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <a class="text-warning font-weight-bold float-right" style="font-size: 14px" (click)="register()">Register</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <div class="text-center d-flex justify-content-center" style="margin-top: 100px;">-->
+<!--          &lt;!&ndash;          <button class="btn btn-warning d-flex">&ndash;&gt;-->
+<!--          &lt;!&ndash;            <mat-icon _ngcontent-serverapp-c141="" role="img"&ndash;&gt;-->
+<!--          &lt;!&ndash;                      class="mat-icon notranslate android material-icons mat-icon-no-color mr-1" aria-hidden="true"&ndash;&gt;-->
+<!--          &lt;!&ndash;                      data-mat-icon-type="font">android&ndash;&gt;-->
+<!--          &lt;!&ndash;            </mat-icon>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <span class="d-flex align-items-center" style="font-weight: 500;">Get ANDROID APP</span>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <mat-icon _ngcontent-serverapp-c141="" role="img"&ndash;&gt;-->
+<!--          &lt;!&ndash;                      class="ml-1 mat-icon notranslate arrow material-icons mat-icon-no-color" aria-hidden="true"&ndash;&gt;-->
+<!--          &lt;!&ndash;                      data-mat-icon-type="font">arrow_forward&ndash;&gt;-->
+<!--          &lt;!&ndash;            </mat-icon>&ndash;&gt;-->
+<!--          &lt;!&ndash;          </button>&ndash;&gt;-->
+
+<!--        </div>-->
+        <!--        <div class="text-warning font-weight-bold d-block text-center mt-4">Powered by ARJUN ONLINE</div>-->
+      </div>
+    </form>
+<!--    <div class="form-border desktop-from login-banner">-->
+<!--      <img style="height: 100%;" src="/assets/images/sl-lc-one-layer-two.png" alt="login-banner">-->
+<!--    </div>-->
+  </div>
+  </div>
+</div>

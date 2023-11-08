@@ -1,0 +1,25 @@
+*{
+  font-size: 14px;
+}
+
+.bg-theme {
+  background: #ffc11c !important;
+  border: none;
+  color: #fff !important;;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.title {
+  border: none !important;
+  background-color: #3c444b !important;
+  box-shadow: none;
+}
+.marketlist {
+  margin: 0;
+  border-top: 1px solid #7e8184;
+  padding: 8px 0;
+}
+.copybtn:active{
+  background: grey;
+}

@@ -1,0 +1,197 @@
+<mat-sidenav-container fullscreen>
+    <!-- (click)="sidenav.toggle()" -->
+    <mat-sidenav #sidenav role="navigation" mode='over' position="start" style="background: #fff;">
+        <app-sidenav (sidenavToggle)="sidenav.toggle()"></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-navbar fxHide fxShow.lt-sm (sidenavToggle)="sidenav.toggle()"></app-navbar>
+        <!--    <app-home></app-home>-->
+        <!--    <main class="container-fluid mat-app-background bg-container zero-margin-desktop margin-mobile" *ngIf="isLoggedIn()">-->
+        <!--      &lt;!&ndash;      <div class="container-fluid">&ndash;&gt;-->
+        <!--      &lt;!&ndash;        <div class="row">&ndash;&gt;-->
+        <!--      &lt;!&ndash;          <div class="col-md-2 m-0 p-0 d-none d-lg-block">&ndash;&gt;-->
+        <!--      &lt;!&ndash;            col1&ndash;&gt;-->
+        <!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+        <!--      &lt;!&ndash;          <div class="col-md-12 col-12 m-0 p-0">&ndash;&gt;-->
+        <!--      <router-outlet></router-outlet>-->
+        <!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+        <!--      &lt;!&ndash;          <div class="col-md-2 m-0 p-0 d-none d-lg-block">&ndash;&gt;-->
+        <!--      &lt;!&ndash;            col3&ndash;&gt;-->
+        <!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+        <!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+        <!--      &lt;!&ndash;      </div>&ndash;&gt;-->
+
+        <!--    </main>-->
+        <main class="container-fluid mat-app-background bg-container zero-margin-desktop margin-mobile">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="d-flex col-12 col-md-12 col-lg-12 col-sm-12 p-0">
+                        <div class="col-md-2 m-0 p-0 col-md-block col-lg-block d-sm-block d-none">
+                            <h4 class="newhead">ALL SPORTS</h4>
+                            <div class="side-style">
+                                <ul class="list-group list-group-flush">
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/politics.png"/>-->
+                                    <!--                                        <span>Politics</span>-->
+                                    <!--                                    </li>-->
+                                    <li class="list-group-item bg-transparent active"
+                                        routerLink="/dashboard/cricket">
+                                        <!--                                        <div class="iconset"><img class="menu-icons side-icon"-->
+                                        <!--                                                                  src="assets/newicons/cricket.png"/></div>-->
+                                        <span class="material-symbols-outlined inline-icons text-white">sports_cricket</span>
+                                        <span>Cricket</span>
+                                    </li>
+                                    <li class="list-group-item bg-transparent text-white"
+                                        routerLink="/dashboard/football">
+                                        <!--                                        <img class="menu-icons side-icon" src="assets/newicons/football.png"/>-->
+                                        <span class="material-symbols-outlined inline-icons text-white">sports_soccer</span>
+                                        <span>Football</span>
+                                    </li>
+                                    <li class="list-group-item bg-transparent text-white"
+                                        routerLink="/dashboard/tennis">
+                                        <!--                                        <img class="menu-icons side-icon" src="assets/newicons/tennis.png"/>-->
+                                        <span class="material-symbols-outlined inline-icons text-white">sports_tennis</span>
+                                        <span>Tennis</span>
+                                    </li>
+                                    <!--                                    <li class="list-group-item bg-transparent text-white"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/table-tennis.png"/>-->
+                                    <!--                                        <span>Table Tennis</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/basketball.png"/>-->
+                                    <!--                                        <span>Basketball</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/valleyball.png"/>-->
+                                    <!--                                        <span>Volleyball</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/snooker.png"/>-->
+                                    <!--                                        <span>Snooker</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/ice-hockey.png"/>-->
+                                    <!--                                        <span>Ice Hockey</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/golf.png"/>-->
+                                    <!--                                        <span>Golf</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/handball.png"/>-->
+                                    <!--                                        <span>Handball</span>-->
+                                    <!--                                    </li>-->
+                                    <!--                                    <li class="list-group-item bg-transparent text-dark"-->
+                                    <!--                                        routerLink="/dashboard/coming-soon">-->
+                                    <!--                                        <img class="menu-icons side-icon" src="assets/newicons/boxing.png"/>-->
+                                    <!--                                        <span>Boxing</span>-->
+                                    <!--                                    </li>-->
+
+                                    <!-- <li class="list-group-item bg-transparent text-dark" >
+                                      <img class="menu-icons side-icon" src="assets/icons/menu-casino.png" />
+                                      <span>Int Casino</span>
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-12 m-0 p-0">
+                            <router-outlet></router-outlet>
+                        </div>
+                        <div class="col-md-2 m-0 p-0 col-md-block col-lg-block d-sm-block d-none">
+                            <h4 class="newhead">New Launched</h4>
+                            <div><img class="w-100" src="/assets/images/Rectangle 2682.png" alt=""></div>
+                            <div class="mt-1"><img class="w-100" src="/assets/images/Rectangle 2683.png" alt=""></div>
+                            <h4 class="newhead mt-2">Our Casino</h4>
+                            <div><img class="w-100" src="/assets/images/Rectangle 2685.png" alt=""></div>
+                            <div class="mt-1"><img class="w-100" src="/assets/images/Rectangle 2686.png" alt=""></div>
+                            <div class="mt-1"><img class="w-100" src="/assets/images/Rectangle 2687.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="py-3 my-4 bg-dark">
+                <ul class="nav justify-content-center pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-link" routerLink="/dashboard/contactus">Contact
+                        Us</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-link"
+                                            routerLink="/dashboard/privacypolicy">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-link" routerLink="/dashboard/gamesrule">Game
+                        Rules</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-link" routerLink="/dashboard/terms">Terms
+                        and Conditions</a></li>
+                </ul>
+                <!--                <ul class="nav justify-content-center pb-3 mb-3">-->
+                <!--                    <li class="nav-item"><img class="payimg p-2" src="/assets/pay-method/ap.jpg"></li>-->
+                <!--                    <li class="nav-item"><img class="payimg p-2" src="/assets/pay-method/gpay.jpg"></li>-->
+                <!--                    <li class="nav-item"><img class="payimg p-2" src="/assets/pay-method/mc.jpg"></li>-->
+                <!--                    <li class="nav-item"><img class="payimg p-2" src="/assets/pay-method/visa.jpg"></li>-->
+                <!--                </ul>-->
+                <!--                <p class="text-center text-link"><img src="assets/images/login_logo_winpride.png"-->
+                <!--                                                      style="width: 120px;height: 52px"></p>-->
+                <div class="footer-main">
+                    <div class="footer-cont pure-g">
+                        <div class="pure-u-3-5">
+                            <div class="provider-list-box">
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/ag.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/allbet.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/card365.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/dg.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/evo.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/ezugi.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/fastspin.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/ka.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/lucky_sports.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/nlc.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/sexybcrt.webp"
+                                                       loading="lazy"></div>
+                                <div><img alt="AG"
+                                                       src="/assets/partner_icons/spribe.webp"
+                                                       loading="lazy"></div>
+                            </div>
+                        </div>
+                        <div class="pure-u-3-5">
+                            <img src="/assets/images/payments.png" class="img-fluid">
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
+        </main>
+<!--        <button class="btn fixed-button p-0" (click)="openDialog()"><img style="width: 60px;"-->
+<!--                                                                         src="/assets/icons/chat-icon-white.png"/>-->
+<!--        </button>-->
+        <app-footer class="sticky-bottom">
+        </app-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>

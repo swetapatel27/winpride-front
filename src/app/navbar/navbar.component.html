@@ -1,0 +1,170 @@
+<nav class="navbar navbar-dark bg-black sticky-top d-flex justify-content-between">
+    <div class="d-flex justify-content-center" style="align-items: center;">
+        <div (click)="onToggleSidenav()" class="sidetoggle-top" style="margin-top: 14px;">
+      <span style="color: #b88831;" class="material-symbols-outlined">
+        menu
+      </span>
+        </div>
+        <a class="navbar-brand text-white ml-1 mr-0 p-0 pt-1">
+            <!--        <div class="sidebar-header" style="margin-left: 4px;margin-top: 10px;">P2W</div>-->
+            <img src="assets/images/logo_winpride.png" style="width: 45px;">
+        </a>
+    </div>
+    <div class="d-flex p-2" *ngIf="!isLoggedIn">
+        <div class="rainbow">
+            <button class="btn btn-login mr-1" routerLink="/register">SIGN UP</button>
+        </div>
+        <div class="rainbow">
+            <button class="btn btn-login" (click)="openlogin()">LOGIN</button>
+        </div>
+    </div>
+    <!--    <div class="d-flex flex-column p-2" *ngIf="!isLoggedIn">-->
+    <!--        <div class="d-flex justify-content-center justify-content-lg-end m-lg-1">-->
+    <!--            <div class="">-->
+    <!--                <button class="d-lg-inline-block d-block btn-login" (click)="login()" *ngIf="!isLoggedIn">Login</button>-->
+    <!--                &lt;!&ndash;        <button class="d-lg-inline-block d-block btn-join text-uppercase  mt-1 mt-lg-0" (click)="openRegister()" *ngIf="!isLoggedIn">&ndash;&gt;-->
+    <!--                &lt;!&ndash;          Register&ndash;&gt;-->
+    <!--                &lt;!&ndash;        </button>&ndash;&gt;-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        &lt;!&ndash;    <div class="marquee mobile-marque d-flex align-items-center d-none d-lg-block mobile-hide"&ndash;&gt;-->
+    <!--        &lt;!&ndash;         style="background:#26272b">&ndash;&gt;-->
+    <!--        &lt;!&ndash;      <a class="d-flex align-items-center">&ndash;&gt;-->
+    <!--        &lt;!&ndash;        &lt;!&ndash; <span class="material-icons"&ndash;&gt;-->
+    <!--        &lt;!&ndash;              style="padding-left:14px; padding-top:2px; font-size: 18px; !important;">volume_up</span> &ndash;&gt;&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <span class="material-icons"&ndash;&gt;-->
+    <!--        &lt;!&ndash;              style="padding-left:14px; padding-top:2px; font-size: 18px;">volume_up</span>&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <marquee scrollamount="1">&ndash;&gt;-->
+    <!--        &lt;!&ndash;          Best Online Bookie - Deposit : 1 Minute / Withdrawal : 30 Minute - Transfer with BANK , UPI , Phonepe , Paytm&ndash;&gt;-->
+    <!--        &lt;!&ndash;          . Goodluck Have Fun !&ndash;&gt;-->
+    <!--        &lt;!&ndash;        </marquee>&ndash;&gt;-->
+    <!--        &lt;!&ndash;      </a>&ndash;&gt;-->
+    <!--        &lt;!&ndash;    </div>&ndash;&gt;-->
+    <!--    </div>-->
+    <!-- Navbar content -->
+    <!-- <div style="position: absolute;">
+      <button (click)="refresh()" style="margin: 10px; width: 33px; height: 26px; border: 1px solid #fff; background: #4c0670;" class="btn btn-sm p-0">
+        <span class="material-symbols-outlined">
+        cached
+        </span>
+      </button>
+    </div> -->
+    <!-- <span style="font-size: 18px; margin-left: 7px;" class="material-symbols-outlined text-warning font-weight-bold">cached</span> -->
+    <div class="p-1" style="display: flex;" *ngIf="isLoggedIn">
+        <div class="pt-2 pb-2 pl-0 pr-0" (click)="refresh()">
+            <div class="bn"><span class="bn-text">BAL</span></div>
+            <div class="text-light text-center"
+                 *ngIf="exposure.length>0">{{balance + exposure[0].exp_amount| number : '.2-2'}}</div>
+        </div>
+        <div class="pt-2 pb-2 pl-0 pr-0" (click)="refresh()">
+            <div class="bn"><span class="bn-text">EXP</span></div>
+            <div class="text-light text-center"
+                 *ngIf="exposure.length>0">{{exposure[0].exp_amount| number : '.2-2'}}</div>
+        </div>
+        <div class="d-flex flex-column">
+            <a style="align-items: center;" mat-icon-button [matMenuTriggerFor]="menu"
+               class=" d-inline-flex justify-content-center align-content-between">
+                <span style="width: 30px; font-size: 10px;">{{username}}</span>
+                <span class="material-symbols-outlined text-light" style="font-size: 2em !important">
+          arrow_drop_down
+        </span>
+            </a>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item id="menu-username"><span
+                        style="font-size: 14px; color: #fff; width: 100%;">Hi, {{username | uppercase}}</span></button>
+                <button mat-menu-item routerLink="/dashboard/home"><span class="material-symbols-outlined">home</span>Home
+                </button>
+                <button mat-menu-item routerLink="/dashboard/deposit"
+                        style="background: linear-gradient(94deg,#b6842d,#ebda8d 55%,#b7862f); color:#fff;"><img
+                        class="menu-icons" src="assets/icons/deposit-icon.png"/>Deposit
+                </button>
+                <button mat-menu-item routerLink="/dashboard/withdraw"
+                        style="background: linear-gradient(94deg,#b6842d,#ebda8d 55%,#b7862f);  color:#fff;border-top: 1px solid;">
+                    <img class="menu-icons" src="assets/icons/withdrawal-icon.png"/>Withdraw
+                </button>
+                <!-- <button mat-menu-item routerLink="/dashboard/my-bets"><span class="material-symbols-outlined">mystery</span>My bets</button> -->
+                <button mat-menu-item routerLink="/dashboard/profit-loss"><span class="material-symbols-outlined">signal_cellular_alt</span>Profit
+                    & loss
+                </button>
+                <button mat-menu-item routerLink="/dashboard/unsettled-bets"><span class="material-symbols-outlined">signal_cellular_alt</span>Unsettled
+                    bets
+                </button>
+                <!-- <button mat-menu-item routerLink="/dashboard/profile"><span class="material-symbols-outlined">person</span>My profile</button> -->
+                <button mat-menu-item routerLink="/dashboard/ledger"><span
+                        class="material-symbols-outlined">monitoring</span>Account Statement
+                </button>
+                <button mat-menu-item routerLink="/dashboard/bonus"><span
+                        class="material-symbols-outlined">monitoring</span>Bonus
+                </button>
+                <button mat-menu-item routerLink="/dashboard/bonus-ledger"><span class="material-symbols-outlined">monitoring</span>Bonus
+                    Account Statement
+                </button>
+                <button mat-menu-item (click)="openDialog()"><span class="material-symbols-outlined">settings</span>Change
+                    password
+                </button>
+                <button mat-menu-item routerLink="/dashboard/terms-conditions"><span class="material-symbols-outlined">gavel</span>Terms
+                    & Conditions
+                </button>
+                <button mat-menu-item (click)="logout()"><span class="material-symbols-outlined">logout</span>Logout
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+
+</nav>
+<div style="padding: 0px 3px;" class="sub-nav d-flex align-items-center justify-content-center " *ngIf="isLoggedIn">
+    <div class="sub-old sub-menu-item" style="background: #b88831;width: 100%;" routerLink="/dashboard/deposit"><img
+            class="tab-icon" src="assets/icons/deposit-icon.png">DEPOSIT
+    </div>
+    <div class="sub-old sub-menu-item" style="background: #b88831; margin-left:3px; width: 100%;"
+         routerLink="/dashboard/withdraw"><img class="tab-icon" src="assets/icons/withdrawal-icon.png">WITHDRAW
+    </div>
+</div>
+<!--<div (click)="onToggleSidenav()" class="sidebar-toggle">-->
+<!--  <span class="material-symbols-outlined">-->
+<!--    menu-->
+<!--  </span>-->
+<!--</div>-->
+<div style="overflow-x: auto; white-space: nowrap; width:100%" class="main-menu sub-nav">
+    <!--  <div class="sub-menu-item new-height" routerLinkActive="active" routerLink="/dashboard/home">-->
+    <!--    <img class="menu-icon" src="assets/icons/menu-home.png" />-->
+    <!--    <span class="menu-text">Home</span>-->
+    <!--  </div>-->
+    <div class="sub-menu-item new-height" routerLinkActive="active" routerLink="/dashboard/inplay-match">
+        <!--    <img class="menu-icon" src="assets/icons/menu-inplay.png" />-->
+        <span class="material-symbols-outlined text-white">play_circle</span>
+        <span class="menu-text">In-play</span>
+    </div>
+    <!-- <div class="sub-menu-item" (click)="sports()" routerLinkActive="active" routerLink="/dashboard/match">SPORTS</div> -->
+    <div class="sub-menu-item new-height" routerLinkActive="active" routerLink="/dashboard/cricket">
+                <img class="" src="assets/icons/cricket.png"/>
+<!--        <span class="material-symbols-outlined text-white">-->
+<!--sports_cricket-->
+<!--</span>-->
+        <span class="menu-text">Cricket</span>
+    </div>
+    <div class="sub-menu-item new-height" routerLinkActive="active" routerLink="/dashboard/football">
+                <img class="" src="assets/icons/football.png"/>
+<!--        <span class="material-symbols-outlined text-white">-->
+<!--sports_soccer-->
+<!--</span>-->
+        <span class="menu-text">Football</span>
+    </div>
+    <div class="sub-menu-item new-height" routerLinkActive="active" routerLink="/dashboard/tennis">
+                <img class="" src="assets/icons/tennis.png"/>
+<!--        <span class="material-symbols-outlined text-white">sports_tennis</span>-->
+        <span class="menu-text">Tennis</span>
+    </div>
+    <div class="sub-menu-item new-height" routerLinkActive="active" routerLink="/dashboard/livecasino">
+                <img class="" src="assets/icons/chip.png"/>
+<!--        <span class="material-symbols-outlined text-white">playing_cards</span>-->
+        <span class="menu-text">Int Casino</span>
+    </div>
+</div>
+<!--<div style="height: 30px;" class="sub-nav d-flex align-items-center mrqstyle">-->
+<!--  <div class="marquee-head"><img style="height: 20px; margin-left: 10px;" src="assets/icons/commentary.png" alt="news"></div>-->
+<!--  <div class="marquee">-->
+<!--    <marquee class="text-white">🏆 ICC Cricket World Cup Winner Bets Started In Our Exchange 🏆. 🎮 VIRTUAL CRICKET BOOKMAKER BETS AVAILABLE IN OUR EXCHANGE. 🎾 TENNIS SET WINNER MARKET AVAILABLE IN OUR EXCHANGE. 🏀 PREMIUM SPORTSBOOK BETS STARTED IN OUR EXCHANGE 🏀 </marquee>-->
+<!--  </div>-->
+<!--</div>-->

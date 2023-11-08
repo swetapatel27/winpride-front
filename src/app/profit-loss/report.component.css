@@ -1,0 +1,48 @@
+.userscreen-title{
+  background: #343435;
+    margin-bottom: 5px;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 5px;
+    color: #fff;
+}
+
+.back-page{
+  background: #000000;
+  color: #fff;
+}
+
+.redtablehead .table thead th {
+  padding: 7px;
+  text-align: center;
+  border: none;
+  background: #000000;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+.btn-white {
+  background: #fff;
+  color:#000000;
+}
+
+.tr-green{
+  background-color:#e1ffe1 !important;
+}
+
+.tr-red{
+  background-color:#ffd2d2 !important;
+}
+
+.tr-grey{
+  background-color:#bebebe !important;
+}
+
+.card{
+  color: white;
+  background: black;
+}

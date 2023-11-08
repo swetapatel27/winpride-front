@@ -1,0 +1,8 @@
+<div class="container pl-0 pr-0">
+<!--  <h2 class="text-center text-warning">Casino Games are under development..!!</h2>-->
+  <div class="row pr-0 pl-0 ml-1 mr-1">
+            <div class="col-4 pt-1 pl-0 pr-0" *ngFor="let game of gameList"><img class="fgame-img" (click)="openNewGameTab(game.uuid)"
+                                                                             [src]="game.image"
+                                                                             alt=""></div>
+        </div>
+</div>

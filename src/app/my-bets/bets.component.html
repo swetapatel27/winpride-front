@@ -1,0 +1,38 @@
+<h2 class="userscreen-title mt-1"><button (click)="backClicked()" class="btn-xs back-page">Back</button><span class="h6 ml-2"> My bets</span></h2>
+<div class="card p-2 redtablehead">
+    <div class="p-2 overflow-auto">
+        <table class="table table-sm table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>.</th>
+                    <th>Runners</th>
+                    <th>Sub Type</th>
+                    <th>Type</th>
+                    <th>Runs</th>
+                    <th>Rate</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="marge_bets.length>0; else noResult">
+                <tr *ngFor="let bet of marge_bets;">
+                    <td><img src="/assets/icons/{{bet.matchtype}}"></td>
+                    <td>{{bet.event_name}}</td>
+                    <td>{{bet.main_type}}</td>
+                    <td>{{bet.type}}</td>
+                    <td>{{bet.price}}</td>
+                    <td>{{bet.size}}</td>
+                    <td><span class="badge" [class.badge-success]="bet.status==1" [class.badge-danger]="bet.status==0">{{bet.status=='1'?"OPEN":"CLOSE"}}</span></td>
+                    <td>{{bet.updated_at | date:'MMM d, y h:mm a'}}</td>
+                </tr>
+            </tbody>
+            <ng-template #noResult>
+                <tbody >
+                    <tr>
+                        <td colspan="100">No data found</td>
+                    </tr>
+                </tbody>
+            </ng-template>
+        </table>
+    </div>
+</div> 
