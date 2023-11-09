@@ -23,15 +23,15 @@ export class SupportComponent implements OnInit {
     }
 
     depositSupport() {
-        location.href = "https://wa.me/91" + this.deposit_whatsapp;
+        location.href = "https://wa.me/" + this.deposit_whatsapp;
     }
 
     withdrawSupport() {
-        location.href = "https://wa.me/91" + this.withdraw_whatsapp;
+        location.href = "https://wa.me/" + this.withdraw_whatsapp;
     }
 
     techSupport() {
-        location.href = "https://wa.me/91" + this.technical_whatsapp;
+        location.href = "https://wa.me/" + this.technical_whatsapp;
     }
 
     instagram() {
