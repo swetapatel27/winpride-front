@@ -1,10 +1,14 @@
 <div class="container-fluid p-0 m-0">
-  <div class="card border-0 p-0 m-0">
-    <div class="card-header">
-      Notice !
+    <div class="card border-0 p-0 m-0">
+        <div class="card-header">
+            <span>Notice!!</span>
+            <span (click)="dismiss()" class="material-symbols-outlined float-right text-red">
+        cancel
+      </span>
+
+        </div>
+        <div class="card-body" style="width: 600px;">
+            <img style="height: 300px; width: 100%;" src="{{popupImg}}" alt="popup">
+        </div>
     </div>
-    <div class="card-body" style="width: 600px;">
-      <img style="height: 300px; width: 100%;" src="{{popupImg}}" alt="popup">
-    </div>
-  </div>
 </div>
