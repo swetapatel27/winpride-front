@@ -79,10 +79,10 @@ const appRoutes: Routes = [
             {path: 'coming-soon', component: ComingSoonComponent},
             {path: 'bonus', component: BonusComponent},
             {path: 'bonus-ledger', component: BonusLedgerComponent},
-             {path: 'casino-detail/:gameid', component: CasinoDetailComponent},
+             {path: 'casino-detail/:gameid/:selectedgame', component: CasinoDetailComponent},
         ]
     },
-    {path: 'casino-detail/:gameid', component: CasinoDetailComponent,canActivate: [AuthGuard]},
+    {path: 'casino-detail/:gameid/:selectedgame', component: CasinoDetailComponent,canActivate: [AuthGuard]},
     {path: 'home', component: HomeComponent},
     // {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
