@@ -13,11 +13,13 @@ import {UserService} from "../services/user.service";
 })
 export class CasinoDetailComponent implements OnInit {
     user_id = localStorage.getItem("user_id");
+    username = localStorage.getItem("username");
     public gameid: any;
     gameurl: any = "";
     is_active: boolean = false;
     balance = 0;
     clicked = false;
+    public selectedGame: any;
 
     constructor(private liveCasinoService: LiveCasinoService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _location: Location, private userService: UserService,) {
     }
@@ -28,8 +30,9 @@ export class CasinoDetailComponent implements OnInit {
         })
         this.getBalance();
         this.gameid = this.route.snapshot.paramMap.get('gameid');
-        this.getGameUrl(this.gameid);
-        //console.log(this.gameid);
+        this.selectedGame = this.route.snapshot.paramMap.get('selectedgame');
+        this.getGameUrl(this.gameid,this.selectedGame,this.user_id);
+
     }
 
     getBalance() {
@@ -39,10 +42,12 @@ export class CasinoDetailComponent implements OnInit {
         })
     }
 
-    getGameUrl(gameid: any) {
+    getGameUrl(gameid: any,selectedGame:any,username:any) {
         //const gi = "AR";
-        this.liveCasinoService.getGamesUrlByidRequests(gameid).subscribe((res: any) => {
-            this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.url);
+
+        this.liveCasinoService.getGamesUrlByidRequests(gameid,selectedGame,username).subscribe((res: any) => {
+            this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.launch_url);
+            // this.gameurl = res.launch_url;
         });
     }
 

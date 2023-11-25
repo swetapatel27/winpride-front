@@ -44,3 +44,7 @@
     height: 100px;
     padding: 0px !important;
 }
+
+.bar-item:hover {
+    background-color: #6d081d !important;
+  }

@@ -12,6 +12,7 @@ import {UserService} from "../services/user.service";
 })
 export class LivecasinoComponent implements OnInit {
     user_id = localStorage.getItem("user_id");
+    username = localStorage.getItem("username");
     balance = 0;
     vendors: any = [];
     gameList: any = [];
@@ -21,6 +22,7 @@ export class LivecasinoComponent implements OnInit {
     is_active: boolean = false;
     clicked = false;
     img_list = ["/assets/images/evolution.png", "/assets/images/ezugi.png", "/assets/images/PowerGames.png", "/assets/images/pragmatic play.png", "/assets/images/qtech.png", "/assets/images/supernova.png", "/assets/images/baccarat-x-pro.png"]
+    selectedGame: string = "";
 
     constructor(private liveCasinoService: LiveCasinoService, private sanitizer: DomSanitizer, private userService: UserService, private router: Router) {
     }
@@ -50,25 +52,24 @@ export class LivecasinoComponent implements OnInit {
 
      getVendorList() {
         this.liveCasinoService.getVendorsRequests().subscribe((res: any) => {
-            this.vendors = res.map((value: any, index: any) => ({
-                name: value,
-                imageUrl: this.img_list[index], // Use the corresponding image URL from img_list
-            }));
-            console.log(this.vendors)
+            // console.log(res.providers)
+            this.vendors=res.providers
+            // console.log(this.vendors)
             // this.vendors = res;
             // this.vendors = res.filter((vendor:any) => vendor === "Evolution" || vendor === "Ezugi");
-            // console.log(this.vendors);
+            // console.log(res.providers[0].code);
             // if(this.vendors[0]) this.getGameList(this.vendors[0]);
-            // if(res[0]) this.getGameList(res[0]);
+            if(res.providers[0]) this.getGameList(res.providers[0].code);
         });
     }
 
     getGameList(provider: any) {
         this.gameurl = "";
         this.activeVendor = provider;
+
         this.isloading = true;
         this.liveCasinoService.getGamesByProviderRequests(provider).subscribe((res: any) => {
-            this.gameList = res;
+            this.gameList = res.games;
             this.isloading = false;
         });
     }
@@ -78,12 +79,19 @@ export class LivecasinoComponent implements OnInit {
     }
 
     getGameUrl(gameid: any) {
-        this.liveCasinoService.getGamesUrlByidRequests(gameid).subscribe((res: any) => {
-            this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.url);
+        if(this.selectedGame==''){
+            this.selectedGame = "PRAGMATIC"
+        }
+        const selectedgame= this.selectedGame;
+
+        this.liveCasinoService.getGamesUrlByidRequests(gameid,selectedgame,this.username).subscribe((res: any) => {
+            this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.launch_url);
+            this.router.navigate(['/casino-detail/', gameid, selectedgame])
         });
     }
 
     openNewGameTab(gameid: any) {
+  
         this.router.navigate(['/casino-detail/', gameid])
     }
 
@@ -94,4 +102,7 @@ export class LivecasinoComponent implements OnInit {
         });
     }
 
+    setSelectedGame(gameName: string) {
+        this.selectedGame = gameName;
+      }
 }
