@@ -3,7 +3,7 @@
         <div class="card m-2">
             <div class="card-body" style="padding: 5px;">
                 <h1 style="text-decoration: underline;" class="card-title text-center">
-                    Casino games
+                    Casino Games
                     <small *ngIf="is_active;" class="balance d-none">Bal: {{balance}}p</small>
                 </h1>
                 <!-- <div class="w-100">
@@ -19,6 +19,7 @@
                 <div class="list" style="display: flex; overflow-y:hidden;  white-space: nowrap; " >
 
                     <div class="bar-item" *ngFor="let vendor of vendors; let i = index" (click)="getGameList(vendor.code); setSelectedGame(vendor.code)" [ngStyle]="{'background-color': activeVendor == vendor.code ? '#6d081d' : '#343435', 'font-size': '14px', 'line-height': '35px', 'padding-left': '15px', 'padding-right': '15px'}">{{vendor.name}}</div>
+
                   </div>                      
                 <!--        <button *ngFor="let vendor of vendors" (click)="getGameList(vendor)" class="btn btn-warning btn-sm ml-1" [class.active]="activeVendor==vendor">{{ vendor }}</button>-->
 
