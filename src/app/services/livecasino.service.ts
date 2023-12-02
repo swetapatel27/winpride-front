@@ -20,8 +20,8 @@ export class LiveCasinoService {
     return this.http.get<any>(environment.base_url + "/casino/gamelist/"+provider);
   }
 
-  getGamesUrlByidRequests(gameid:any ,gameCode:any, username:any): Observable<any> {
-    return this.http.get<any>(environment.base_url + "/casino/gameUrl/"+gameid+"/"+gameCode+"/"+username);
+  getGamesUrlByidRequests(gameid:any ,gameCode:any, user_id:any): Observable<any> {
+    return this.http.get<any>(environment.base_url + "/casino/gameUrl/"+gameid+"/"+gameCode+"/"+user_id);
   }
 
   activateAccountRequests(): Observable<any> {

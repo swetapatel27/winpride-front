@@ -20,6 +20,7 @@ export class CasinoDetailComponent implements OnInit {
     balance = 0;
     clicked = false;
     public selectedGame: any;
+    provider: any;
 
     constructor(private liveCasinoService: LiveCasinoService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _location: Location, private userService: UserService,) {
     }
@@ -44,8 +45,9 @@ export class CasinoDetailComponent implements OnInit {
 
     getGameUrl(gameid: any,selectedGame:any,username:any) {
         //const gi = "AR";
-
-        this.liveCasinoService.getGamesUrlByidRequests(gameid,selectedGame,username).subscribe((res: any) => {
+        this.provider = this.route.snapshot.paramMap.get('selectedgame');
+        this.liveCasinoService.getGamesUrlByidRequests(gameid,this.provider,this.user_id).subscribe((res: any) => {
+            
             this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.launch_url);
             // this.gameurl = res.launch_url;
         });

@@ -79,14 +79,17 @@ export class LivecasinoComponent implements OnInit {
     }
 
     getGameUrl(gameid: any) {
-        if(this.selectedGame==''){
-            this.selectedGame = "PRAGMATIC"
-        }
+        // if(this.selectedGame==''){
+        //     this.selectedGame = "PRAGMATIC"
+        // }
         const selectedgame= this.selectedGame;
 
-        this.liveCasinoService.getGamesUrlByidRequests(gameid,selectedgame,this.username).subscribe((res: any) => {
+        this.liveCasinoService.getGamesUrlByidRequests(gameid,this.activeVendor,this.user_id).subscribe((res: any) => {
+            if(res.status==0)(
+                this.activateAccount()
+            )
             this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.launch_url);
-            this.router.navigate(['/casino-detail/', gameid, selectedgame])
+            this.router.navigate(['/casino-detail/', gameid, this.activeVendor])
         });
     }
 
@@ -104,5 +107,6 @@ export class LivecasinoComponent implements OnInit {
 
     setSelectedGame(gameName: string) {
         this.selectedGame = gameName;
+        // console.log(this.selectedGame)
       }
 }
