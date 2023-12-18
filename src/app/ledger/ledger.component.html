@@ -72,6 +72,38 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
+
+    <div class="mt-3" *ngIf="updated_casino_ledger_data.length>0">
+      <mat-accordion *ngFor="let data of updated_casino_ledger_data">
+        <mat-expansion-panel  [class.border-success]="data.profit_loss>=0" [class.border-danger]="data.profit_loss<0"   class="border rounded mt-2" style="border-width:2px!important;" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              <span class="text-white mr-3 ">{{data.gameid | titlecase}}</span>
+              <div>{{data.created_at|date:'MMM d, y h:mm:ss a'}}</div>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="font-weight-bold" [class.text-success]="data.profit_loss>=0" [class.text-danger]="data.profit_loss<0">
+                {{data.profit_loss}} </span>
+              <span class="text-white ml-3">{{data.new_limit}}</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div>
+            <hr class="border border-success">
+            <div class="row">
+              <div class="col-4" *ngIf="data.roundid!=null">
+                <span class="text-success d-block text-break">{{data.type}}-{{data.roundid}}</span>
+                <span>{{data.event_id}}</span><span> - {{data.sub_type}}</span>
+              </div>
+              <div class="col-4" *ngIf="data.event_name!=null">{{data.event_name}}</div>
+              <div class="col-4" *ngIf="data.event_id!=null"><span class="d-block">{{data.new_limit}}</span><span class="d-block"> {{data.profit_loss}}</span><span class="d-block text-break">{{data.runner_name}}</span></div>
+              <div class="col-8 mt-2"><span class="font-weight-bold">Description: </span>Balance updated. Old Limit: {{data.old_limit}}. New Limit: {{data.new_limit}} </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    
     <ng-template #nodata>
       <div class="text-center">No data found</div>
     </ng-template>

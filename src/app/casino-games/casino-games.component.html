@@ -2,10 +2,10 @@
   <div class="pt-2 pb-2">
       <div class="card m-2">
           <div class="card-body" style="padding: 5px;">
-              <h1 style="text-decoration: underline;" class="card-title text-center">
+              <!-- <h1 style="text-decoration: underline;" class="card-title text-center">
                   Casino Games
                   <small *ngIf="is_active; " class="balance d-none">Bal: {{balance}}p</small>
-              </h1>
+              </h1> -->
               <!-- <div class="w-100">
                   <div class="d-flex flex-wrap col-12 col-md-12">
                       <div class="col-6 col-md-3 p-2" *ngFor="let vendor of vendors"><img class="img-fluid"
@@ -16,28 +16,28 @@
                   
               </div> -->
               <div *ngIf="is_active; else notActive" id="game_container">
-              <div class="list" style="display: flex; overflow-y:hidden;  white-space: nowrap; " >
+              <!-- <div class="list" style="display: flex; overflow-y:hidden;  white-space: nowrap; " >
 
                   <div class="bar-item" *ngFor="let vendor of vendors; let i = index" (click)="getGameList(vendor.code); setSelectedGame(vendor.code)" >                            <img class="vendor-image" [src]="vendor.image" alt="{{ vendor.name }}"></div>
 
-                </div>                      
+                </div>                       -->
               <!--        <button *ngFor="let vendor of vendors" (click)="getGameList(vendor)" class="btn btn-warning btn-sm ml-1" [class.active]="activeVendor==vendor">{{ vendor }}</button>-->
 
               <!--        <div *ngIf="gameurl==''; else gameWindow">-->
               <!--          <h4 class="mt-4">{{activeVendor}}</h4>-->
-                       <!-- <div *ngIf="isloading; else gamelist">
+                       <div *ngIf="isloading; else gamelist">
                          <mat-spinner diameter="40"></mat-spinner> 
-                       </div> -->
-                       <!-- <ng-template #gamelist>
+                       </div>
+                       <ng-template #gamelist>
                        <div *ngIf="gameList.length>0;" class="row col-12 w-100 p-0 m-0 mb-2">
                           
-                         <div *ngFor="let game of gameList" class="col-lg-2 col-md-3 col-6 p-0"> -->
+                         <div *ngFor="let game of gameList" class="col-lg-2 col-md-3 col-6 p-0">
                            <!-- <img class="game_banner" (click)="openNewGameTab(game.uuid)" src="{{game.banner}}" /> -->
-                           <!-- <img class="game_banner" (click)="getGameUrl(game.game_code)" src="{{game.banner}}" /> 
+                           <img class="game_banner" (click)="getGameUrl(game.game_code)" src="{{game.banner}}" /> 
                          </div>
                        </div>
 
-                       </ng-template> -->
+                       </ng-template>
               <!--        </div>-->
               <!--        <ng-template #gameWindow>-->
               <!--          <div class="col-md-12 mt-4 p-0">-->

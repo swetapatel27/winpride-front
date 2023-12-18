@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser'
 import {LiveCasinoService} from "../services/livecasino.service";
@@ -12,18 +12,25 @@ import {UserService} from "../services/user.service";
     providers: []
 })
 export class CasinoDetailComponent implements OnInit {
+
     user_id = localStorage.getItem("user_id");
     username = localStorage.getItem("username");
     public gameid: any;
     gameurl: any = "";
+    gameurl1: any = "";
     is_active: boolean = false;
     balance = 0;
     clicked = false;
     public selectedGame: any;
-    provider: any;
 
     constructor(private liveCasinoService: LiveCasinoService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private _location: Location, private userService: UserService,) {
+        this.route.queryParams.subscribe(params => {
+            this.gameurl1 = params['gameurl'];
+        });
     }
+
+
+
 
     ngOnInit(): void {
         this.userService.refreshBalance.subscribe(() => {
@@ -32,8 +39,13 @@ export class CasinoDetailComponent implements OnInit {
         this.getBalance();
         this.gameid = this.route.snapshot.paramMap.get('gameid');
         this.selectedGame = this.route.snapshot.paramMap.get('selectedgame');
-        this.getGameUrl(this.gameid,this.selectedGame,this.user_id);
+        this.getGameUrl(this.gameurl1);
 
+    }
+
+    ngOnDestroy(): void {
+        this.casinoBalanceToAccount();
+        this.casinoLedger();
     }
 
     getBalance() {
@@ -43,14 +55,10 @@ export class CasinoDetailComponent implements OnInit {
         })
     }
 
-    getGameUrl(gameid: any,selectedGame:any,username:any) {
+    getGameUrl(gameurl:any) {
         //const gi = "AR";
-        this.provider = this.route.snapshot.paramMap.get('selectedgame');
-        this.liveCasinoService.getGamesUrlByidRequests(gameid,this.provider,this.user_id).subscribe((res: any) => {
-            
-            this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.launch_url);
-            // this.gameurl = res.launch_url;
-        });
+            this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(gameurl);
+        
     }
 
     activateAccount() {
@@ -58,6 +66,19 @@ export class CasinoDetailComponent implements OnInit {
             alert('Account Activated');
             location.reload();
         });
+    }
+
+    casinoBalanceToAccount(){
+        const data ={
+           id:this.user_id
+        }
+        this.liveCasinoService.convertCasinoBalance(data).subscribe((data: any) => {
+        })
+    }
+
+    casinoLedger(){
+        this.liveCasinoService.ledgerEntryCasino(this.user_id).subscribe((data: any) => {
+        })
     }
 
     backClicked() {

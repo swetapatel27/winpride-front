@@ -76,6 +76,7 @@ import {ContactPageComponent} from "./static/contactus/detail.component";
 import {PrivacyPageComponent} from "./static/privacypolicy/detail.component";
 import {GameRulePageComponent} from "./static/gamesrule/detail.component";
 import {LoginModalComponent} from "./modals/login-model/login-modal.component";
+import {LivecasinoGamesComponent} from "./casino-games/casino-games.component";
 
 @NgModule({
     declarations: [
@@ -136,7 +137,8 @@ import {LoginModalComponent} from "./modals/login-model/login-modal.component";
         PrivacyPageComponent,
         GameRulePageComponent,
         TermsPageComponent,
-        LoginModalComponent
+        LoginModalComponent,
+        LivecasinoGamesComponent,
     ],
     imports: [
         BrowserModule,

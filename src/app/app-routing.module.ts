@@ -41,6 +41,7 @@ import {TermsPageComponent} from "./static/terms/detail.component";
 import {ContactPageComponent} from "./static/contactus/detail.component";
 import {PrivacyPageComponent} from "./static/privacypolicy/detail.component";
 import {GameRulePageComponent} from "./static/gamesrule/detail.component";
+import {LivecasinoGamesComponent} from "./casino-games/casino-games.component";
 
 
 const appRoutes: Routes = [
@@ -72,6 +73,7 @@ const appRoutes: Routes = [
             {path: 'tennis', component: TennisComponent},
             {path: 'livecasino', component: LivecasinoComponent},
             {path: 'casino-dw', component: CasinoDwComponent},
+            {path: 'livecasino/:gameid', component: LivecasinoGamesComponent},
             {path: 'casino-ledger', component: CasinoLedgerComponent},
             {path: 'my-bets', component: MybetListComponent},
             {path: 'unsettled-bets', component: UnsettlebetListComponent},
@@ -83,6 +85,7 @@ const appRoutes: Routes = [
         ]
     },
     {path: 'casino-detail/:gameid/:selectedgame', component: CasinoDetailComponent,canActivate: [AuthGuard]},
+    {path: 'livecasino/:gameid', component: LivecasinoGamesComponent,canActivate: [AuthGuard]},
     {path: 'home', component: HomeComponent},
     // {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},

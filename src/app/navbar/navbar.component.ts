@@ -9,6 +9,8 @@ import {RegisterModalComponent} from "../modals/register-modal/register-modal.co
 import {PopupModalComponent} from "../modals/popup/popup.component";
 import {ChangePasswordComponent} from "../modals/change-password/change-password.component";
 import {LoginModalComponent} from "../modals/login-model/login-modal.component";
+import { ReloadService } from '../services/reload.service';
+import {LiveCasinoService} from "../services/livecasino.service";
 
 @Component({
   selector: 'app-navbar',
@@ -26,8 +28,9 @@ export class NavbarComponent implements OnInit {
   loginForm: any;
   errorMsg: any;
   submitted = false;
+  balanceUpdated : boolean =false;
 
-  constructor(public dialog: MatDialog,private router: Router, private fb: FormBuilder, private userService: UserService, private exposureService: ExposureService,private authService:AuthService) {
+  constructor(public dialog: MatDialog,private router: Router, private fb: FormBuilder, private userService: UserService, private exposureService: ExposureService,private authService:AuthService, private reloadService: ReloadService,private liveCasinoService: LiveCasinoService) {
 
   }
 
@@ -55,6 +58,14 @@ export class NavbarComponent implements OnInit {
     setTimeout(()=>{
       localStorage.setItem("popup",istrue);
     }, 5000);
+
+    this.reloadService.reload$.subscribe(() => {
+      this.refresh();
+    });
+    setTimeout(()=>{
+      this.casinoBalanceToAccount();
+      this.casinoLedger();
+    }, 2000);
   }
 
   get loginFormControl() {
@@ -182,5 +193,21 @@ sports(){
       //console.log(`Dialog result: ${result}`);
     });
   }
+
+  casinoBalanceToAccount(){
+    if(this.balanceUpdated==false){
+      const data ={
+        id:this.user_id
+     }
+     this.liveCasinoService.convertCasinoBalance(data).subscribe((data: any) => {
+     })
+     this.balanceUpdated=true;
+    }
+
+}
+casinoLedger(){
+  this.liveCasinoService.ledgerEntryCasino(this.user_id).subscribe((data: any) => {
+  })
+}
 
 }

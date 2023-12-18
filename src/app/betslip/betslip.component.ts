@@ -903,7 +903,7 @@ export class BetslipComponent implements OnInit {
                         }
 
                         //console.log(this.exp_amount1, this.exp_amount2, this.exp_amount3);
-                        //console.log('wa', this.finalProfit);
+                        // console.log('wa', match_bet);
                         //console.log('la', this.finalLoss);
                         let latest_min_exp = 0;
                         if (this.data.enable_draw) {

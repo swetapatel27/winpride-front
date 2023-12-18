@@ -3,15 +3,20 @@ import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser'
 import {LiveCasinoService} from "../services/livecasino.service";
 import {UserService} from "../services/user.service";
+import { ActivatedRoute } from '@angular/router';
 import {ExposureService} from "../services/exposure.service";
+import {ToastrService} from "ngx-toastr";
+import {NavbarComponent} from "../navbar/navbar.component";
+import { ReloadService } from '../services/reload.service';
+
 
 @Component({
-    selector: 'app-livecasino',
-    templateUrl: './casino.component.html',
-    styleUrls: ['./casino.component.css'],
+    selector: 'app-casino-games',
+    templateUrl: './casino-games.component.html',
+    styleUrls: ['./casino-games.component.css'],
     providers: []
 })
-export class LivecasinoComponent implements OnInit {
+export class LivecasinoGamesComponent implements OnInit {
     user_id = localStorage.getItem("user_id");
     username = localStorage.getItem("username");
     balance = 0;
@@ -24,9 +29,11 @@ export class LivecasinoComponent implements OnInit {
     clicked = false;
     img_list = [ "/assets/images/pragmatic play.png", "/assets/images/habanero.png","/assets/images/boongo.png", "/assets/images/playson.png", "/assets/images/cq9.png",  "/assets/images/evoplay.png", "/assets/images/toptrend.png", " /assets/images/dreamtech.png", "/assets/images/pgsoft.png", "/assets/images/reel-kingdom.png", "/assets/images/ezugi.png", "/assets/images/evolution.png", "/assets/images/supernova.png", "/assets/images/baccarat-x-pro.png"]
     selectedGame: string = "";
+    provider: any;
     exposure: any = [];
+    isLoggedIn: boolean = false;
 
-    constructor(private liveCasinoService: LiveCasinoService, private sanitizer: DomSanitizer, private userService: UserService, private router: Router, private exposureService: ExposureService) {
+    constructor(private liveCasinoService: LiveCasinoService, private sanitizer: DomSanitizer, private userService: UserService, private router: Router, private route: ActivatedRoute, private exposureService: ExposureService, private toasterService: ToastrService, private reloadService: ReloadService) {
     }
 
     ngOnInit(): void {
@@ -36,14 +43,36 @@ export class LivecasinoComponent implements OnInit {
             this.getBalance();
         })
         this.getBalance();
+
+        this.provider = this.route.snapshot.paramMap.get('gameid');
+
+        this.getGameList(this.provider)
+        
         this.getExposureDetails();
+
+        setTimeout(() => {
+            this.reloadService.triggerReload();
+          }, 3000);
+
     }
 
-    getBalance() {
-        this.userService.getUserBalance(this.user_id).subscribe((data: any) => {
-            this.balance = data.casino_balance;
-            this.is_active = data.casino_active;
-        })
+
+    // getBalance() {
+    //     this.userService.getUserBalance(this.user_id).subscribe((data: any) => {
+    //         this.balance = data.balance;
+    //         this.is_active = data.casino_active;
+    //         console.log(this.balance)
+    //     })
+    // }
+    async getBalance() {
+        return new Promise<void>((resolve) => {
+            this.userService.getUserBalance(this.user_id).subscribe((data: any) => {
+                this.balance = data.balance;
+                this.is_active = data.casino_active;
+                // console.log(this.balance)
+                resolve();
+            });
+        });
     }
 
     // getVendorList() {
@@ -63,15 +92,12 @@ export class LivecasinoComponent implements OnInit {
                     image: this.img_list[index]
                 };
             });
-            const temp = this.vendors[1]
-            this.vendors[1]= this.vendors[this.vendors.length-2]
-            this.vendors[this.vendors.length-2]=temp
-
-            const temp1 = this.vendors[2]
-            this.vendors[2]= this.vendors[this.vendors.length-1]
-            this.vendors[this.vendors.length-1]=temp1
-
             // console.log(this.vendors)
+            // this.vendors = res;
+            // this.vendors = res.filter((vendor:any) => vendor === "Evolution" || vendor === "Ezugi");
+            // console.log(res.providers[0].code);
+            // if(this.vendors[0]) this.getGameList(this.vendors[0]);
+            // if(res.providers[0]) this.getGameList(res.providers[0].code);
         });
     }
 
@@ -81,10 +107,9 @@ export class LivecasinoComponent implements OnInit {
 
         this.isloading = true;
         this.liveCasinoService.getGamesByProviderRequests(provider).subscribe((res: any) => {
+            // this.router.navigate(['/dashboard/home'])
             this.gameList = res.games;
             this.isloading = false;
-            this.router.navigate(['/dashboard/livecasino', provider], { state: { gameList: this.gameList } });
- 
         });
     }
 
@@ -92,23 +117,37 @@ export class LivecasinoComponent implements OnInit {
         this.router.navigate(['/dashboard/casino', provider]);
     }
 
-    getGameUrl(gameid: any) {
-
+    async getGameUrl(gameid: any) {
+        await this.getBalance();
+        if(this.balance+this.exposure==0){
+            this.toasterService.error('Low Balance');
+            return;
+        }
+        this.provider = this.route.snapshot.paramMap.get('gameid');
         const selectedgame= this.selectedGame;
+        // console.log(this.provider)
 
         const data ={
             gameId: gameid,
-            provider: this.selectedGame,
+            provider: this.provider,
             userId: this.user_id,
             balance: this.balance,
             exposure: this.exposure
         }
-        console.log(data)
-
+        // console.log(data)
+        
         this.liveCasinoService.getGamesUrlByidRequests(data).subscribe((res: any) => {
-
+            if(res.status==0){                
+                if(res.msg=="Invalid User"){
+                this.activateAccount()
+            }
+            else{
+                this.toasterService.error('Internal Error')
+            }
+        }
+            
             this.gameurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.launch_url);
-            this.router.navigate(['/casino-detail/', gameid, selectedgame])
+            this.router.navigate(['/casino-detail/', gameid, this.provider], { queryParams: { gameurl: res.launch_url } })
         });
     }
 
@@ -128,7 +167,7 @@ export class LivecasinoComponent implements OnInit {
         this.selectedGame = gameName;
       }
 
-      getExposureDetails() {
+    getExposureDetails() {
         this.exposureService.getExposure().subscribe((data: any) => {
             this.exposure = data[0].exp_amount;
         }, (error) => {
